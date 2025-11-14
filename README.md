@@ -1,9 +1,10 @@
 # Node.js Portfolio Website
 
-A modern, responsive portfolio website built with Node.js, Express.js, and Tailwind CSS. This website showcases web development projects and provides information about skills and experience.
+A modern, responsive portfolio website built with Node.js, Express.js, TypeScript, and Tailwind CSS. This website showcases web development projects and provides information about skills and experience.
 
 ## Features
 
+- **TypeScript**: Type-safe development with full TypeScript support
 - **Modern UI**: Built with Tailwind CSS for a clean, responsive design
 - **Express.js Backend**: Fast and lightweight server framework
 - **EJS Templating**: Server-side rendering with layout support
@@ -14,22 +15,28 @@ A modern, responsive portfolio website built with Node.js, Express.js, and Tailw
 
 ```
 portfolio-website/
+├── dist/                   # Compiled JavaScript (generated)
+│   ├── server.js
+│   └── routes/
+│       └── index.js
 ├── public/
 │   └── css/
 │       ├── input.css      # Tailwind CSS entry point
 │       └── output.css     # Compiled CSS (generated)
 ├── routes/
-│   └── index.js           # Route handlers
+│   └── index.ts           # Route handlers (TypeScript)
 ├── views/
 │   ├── layout.ejs         # Base layout template
 │   ├── index.ejs          # Homepage
 │   ├── projects.ejs       # Projects page
 │   ├── about.ejs          # About page
-│   └── contact.ejs         # Contact page
-├── server.js               # Express server
-├── package.json            # Dependencies and scripts
-├── tailwind.config.js      # Tailwind configuration
-├── postcss.config.js       # PostCSS configuration
+│   └── contact.ejs        # Contact page
+├── server.ts              # Express server (TypeScript)
+├── tsconfig.json          # TypeScript configuration
+├── nodemon.json           # Nodemon configuration
+├── package.json           # Dependencies and scripts
+├── tailwind.config.js     # Tailwind configuration
+├── postcss.config.js      # PostCSS configuration
 └── render.yaml             # Render deployment config
 ```
 
@@ -52,29 +59,39 @@ portfolio-website/
    ```bash
    npm install
    ```
+   This will automatically:
+   - Install all dependencies (including TypeScript)
+   - Compile TypeScript to JavaScript (via postinstall script)
+   - Build Tailwind CSS
 
-4. Build Tailwind CSS:
-   ```bash
-   npm run build:css
-   ```
-
-5. Start the development server:
+4. Start the development server:
    ```bash
    npm run dev
    ```
+   This runs TypeScript directly with hot reload using nodemon and ts-node.
 
-   Or for production:
+   Or for production (after building):
    ```bash
+   npm run build
    npm start
    ```
 
-6. Open your browser and visit `http://localhost:3000`
+5. Open your browser and visit `http://localhost:3000`
 
 ## Development
 
 ### Running in Development Mode
 
-Use `npm run dev` to start the server with nodemon, which will automatically restart when you make changes.
+Use `npm run dev` to start the server with nodemon and ts-node, which will automatically restart when you make changes to TypeScript files.
+
+### Building TypeScript
+
+To compile TypeScript to JavaScript:
+```bash
+npm run build
+```
+
+This generates JavaScript files in the `dist/` directory from your TypeScript source files.
 
 ### Building CSS
 
@@ -85,14 +102,16 @@ npm run build:css
 
 This generates `public/css/output.css` from `public/css/input.css`.
 
+**Note**: The `postinstall` script automatically runs both builds after `npm install`, so manual building is usually not needed.
+
 ## Customization
 
 ### Adding Projects
 
-Edit `routes/index.js` and modify the `projects` array with your own project data:
+Edit `routes/index.ts` and modify the `projects` array with your own project data:
 
-```javascript
-const projects = [
+```typescript
+const projects: Project[] = [
   {
     id: 1,
     title: 'Your Project Title',
@@ -133,11 +152,12 @@ This project is configured for deployment on Render.
    - Connect your repository
    - Render will auto-detect the configuration from `render.yaml`
 
-3. The build command will:
+3. The build process will automatically:
    - Install dependencies (`npm install`)
-   - Build Tailwind CSS (`npm run build:css`)
+   - Compile TypeScript to JavaScript (via postinstall script)
+   - Build Tailwind CSS (via postinstall script)
 
-4. The start command runs: `npm start`
+4. The start command runs: `npm start` (which runs the compiled JavaScript from `dist/`)
 
 5. Your site will be live at a `*.onrender.com` URL
 
@@ -151,7 +171,7 @@ The contact form is set up but currently just logs submissions. To make it funct
 
 1. Add email sending functionality (e.g., using Nodemailer)
 2. Or integrate with a form service (e.g., Formspree, SendGrid)
-3. Update the POST route in `routes/index.js`
+3. Update the POST route in `routes/index.ts`
 
 ## License
 
