@@ -4,7 +4,7 @@
         <div class="text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome to My Portfolio</h1>
             <p class="text-xl md:text-2xl mb-8 text-orange-100">Showcasing my web development projects and skills</p>
-            <a href="/projects" class="inline-block bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition duration-300">
+            <a href="/projects" class="inline-block bg-gray-200 text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition duration-300">
                 View My Work
             </a>
         </div>
@@ -14,16 +14,16 @@
 <!-- Featured Projects Section -->
 <section class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-100">Featured Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <% projects.forEach(project => { %>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                <div class="h-48 bg-gray-200 flex items-center justify-center">
+            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="h-48 bg-gray-700 flex items-center justify-center">
                     <span class="text-gray-400">Project Image</span>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2"><%= project.title %></h3>
-                    <p class="text-gray-600 mb-4"><%= project.description %></p>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-100"><%= project.title %></h3>
+                    <p class="text-gray-300 mb-4"><%= project.description %></p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <% project.technologies.forEach(tech => { %>
                         <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded"><%= tech %></span>
@@ -43,11 +43,11 @@
 </section>
 
 <!-- About Preview Section -->
-<section class="bg-gray-100 py-16">
+<section class="bg-gray-800 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h2 class="text-3xl font-bold mb-6">About Me</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-100">About Me</h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
                 I'm a web developer passionate about creating beautiful and functional web experiences. 
                 I specialize in modern web technologies and love turning complex problems into simple, elegant solutions.
             </p>
