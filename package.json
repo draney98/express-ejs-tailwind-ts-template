@@ -7,7 +7,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "nodemon --exec ts-node server.ts",
-    "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify"
+    "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify",
+    "postinstall": "npm run build && npm run build:css"
   },
   "keywords": [
     "portfolio",
@@ -23,14 +24,14 @@
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
     "postcss": "^8.4.32",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/express": "^5.0.5",
     "@types/express-ejs-layouts": "^2.5.4",
     "@types/node": "^24.10.1",
     "nodemon": "^3.0.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "ts-node": "^10.9.2"
   }
 }
