@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: portfolio-website
+    name: your-service-name-here
     env: node
     buildCommand: npm install
     startCommand: npm start
@@ -9,4 +9,3 @@ services:
         value: production
       - key: PORT
         value: 10000
-
