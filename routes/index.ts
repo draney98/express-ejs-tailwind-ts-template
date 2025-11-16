@@ -31,4 +31,3 @@ router.post('/contact', (req: Request, res: Response): void => {
   res.redirect('/contact?success=true');
 });
 export default router;
-

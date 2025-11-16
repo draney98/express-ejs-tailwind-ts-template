@@ -4,12 +4,37 @@
   "main": "dist/server.js",
   "license": "ISC",
   "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/express-ejs-tailwind-ts-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/express-ejs-tailwind-ts-template/issues"
+  },
+  "homepage": "https://github.com/your-org/express-ejs-tailwind-ts-template#readme",
+  "keywords": [
+    "express",
+    "ejs",
+    "tailwind",
+    "typescript",
+    "starter",
+    "template",
+    "render"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "nodemon --exec ts-node server.ts",
     "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify",
-    "postinstall": "npm run build && npm run build:css"
+    "postinstall": "npm run build && npm run build:css",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "echo \"No tests yet\" && exit 0"
   },
   "dependencies": {
     "ejs": "^3.1.10",
@@ -18,14 +43,20 @@
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
-    "@types/express-ejs-layouts": "^2.5.3",
     "@types/express": "^4.17.21",
+    "@types/express-ejs-layouts": "^2.5.3",
     "@types/node": "^20.11.30",
+    "@typescript-eslint/eslint-plugin": "^8.8.1",
+    "@typescript-eslint/parser": "^8.8.1",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
     "nodemon": "^3.0.1",
     "postcss": "^8.4.49",
+    "prettier": "3.6.2",
     "tailwindcss": "^3.4.13",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.8.1"
   }
 }
