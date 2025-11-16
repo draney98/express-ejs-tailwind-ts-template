@@ -2,5 +2,12 @@
   "name": "express-ejs-tailwind-ts-template",
   "description": "Starter template: Express + EJS + Tailwind + TypeScript, ready for Render.",
   "main": "dist/server.js",
-  "scripts": { ... }  // keep as-is
+  "scripts": "scripts": 
+  {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon --exec ts-node server.ts",
+    "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify",
+    "postinstall": "npm run build && npm run build:css"
+  }
 }
