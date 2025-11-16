@@ -13,48 +13,7 @@ interface Project {
 }
 
 // Sample projects data - replace with your actual projects
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Project One',
-    description: 'A description of your first project. Showcase your skills and technologies used.',
-    technologies: ['Node.js', 'Express', 'MongoDB'],
-    image: '/images/project1.jpg',
-    link: '#'
-  },
-  {
-    id: 2,
-    title: 'Project Two',
-    description: 'A description of your second project. Highlight key features and achievements.',
-    technologies: ['React', 'Tailwind CSS', 'API'],
-    image: '/images/project2.jpg',
-    link: '#'
-  },
-  {
-    id: 3,
-    title: 'Project Three',
-    description: 'A description of your third project. Demonstrate your problem-solving abilities.',
-    technologies: ['JavaScript', 'HTML5', 'CSS3'],
-    image: '/images/project3.jpg',
-    link: '#'
-  }
-];
-
-// Homepage
-router.get('/', (req: Request, res: Response): void => {
-  res.render('index', {
-    title: 'Home',
-    projects: projects.slice(0, 3) // Show 3 featured projects on homepage
-  });
-});
-
-// Projects page
-router.get('/projects', (req: Request, res: Response): void => {
-  res.render('projects', {
-    title: 'Projects',
-    projects: projects
-  });
-});
+const projects: Project[] = []; // Starter projects list (empty)
 
 // About page
 router.get('/about', (req: Request, res: Response): void => {
