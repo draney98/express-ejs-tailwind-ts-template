@@ -1,38 +1,24 @@
-<!-- Projects Header -->
-<section class="bg-orange-600 text-white py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold">My Projects</h1>
-        <p class="text-xl mt-2 text-orange-100">A collection of my web development work</p>
-    </div>
-</section>
-
-<!-- Projects Grid -->
 <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <% projects.forEach(project => { %>
-            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                <div class="h-48 bg-gray-700 flex items-center justify-center">
-                    <span class="text-gray-400">Project Image</span>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-100"><%= project.title %></h3>
-                    <p class="text-gray-300 mb-4"><%= project.description %></p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <% project.technologies.forEach(tech => { %>
-                        <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded"><%= tech %></span>
-                        <% }); %>
-                    </div>
-                    <a href="<%= project.link %>" class="text-orange-600 hover:text-orange-800 font-medium inline-flex items-center">
-                        View Project 
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-4xl font-bold mb-6 text-gray-100">Projects</h1>
+    <% if (!projects || projects.length === 0) { %>
+      <p class="text-gray-300">No projects yet. Add items to the array in <code>routes/index.ts</code>.</p>
+    <% } else { %>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <% projects.forEach(project => { %>
+          <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+            <div class="h-48 bg-gray-700 flex items-center justify-center">
+              <span class="text-gray-400">Project Image</span>
             </div>
-            <% }); %>
-        </div>
-    </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-gray-100"><%= project.title %></h3>
+              <p class="text-gray-300 mb-4"><%= project.description %></p>
+              <a href="<%= project.link %>" class="text-orange-600 hover:text-orange-800 font-medium">View →</a>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
 </section>
 
