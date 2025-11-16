@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ReviewConfig {
+  id                Int               @id @default(autoincrement())
+  name              String
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  companyQuestions  CompanyQuestion[]
+}
+
+model CompanyQuestion {
+  id                   Int                 @id @default(autoincrement())
+  reviewConfigId       Int
+  text                 String
+  prompt               String
+  orderIndex           Int                 @default(0)
+  reviewConfig         ReviewConfig        @relation(fields: [reviewConfigId], references: [id])
+  supportingQuestions  SupportingQuestion[]
+  sessions             ReviewSession[]
+}
+
+model SupportingQuestion {
+  id                 Int              @id @default(autoincrement())
+  companyQuestionId  Int
+  text               String
+  responderType      String            @default("MANAGER")
+  orderIndex         Int               @default(0)
+  companyQuestion    CompanyQuestion   @relation(fields: [companyQuestionId], references: [id])
+  supportingAnswers  SupportingAnswer[]
+}
+
+model ReviewSession {
+  id                  Int               @id @default(autoincrement())
+  companyQuestionId   Int
+  status              String            @default("DRAFT")
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  companyAnswer       String?
+  companyQuestion     CompanyQuestion    @relation(fields: [companyQuestionId], references: [id])
+  supportingAnswers   SupportingAnswer[]
+}
+
+model SupportingAnswer {
+  id                    Int                 @id @default(autoincrement())
+  reviewSessionId       Int
+  supportingQuestionId  Int
+  answer                String?
+  reviewSession         ReviewSession       @relation(fields: [reviewSessionId], references: [id])
+  supportingQuestion    SupportingQuestion  @relation(fields: [supportingQuestionId], references: [id])
+
+  @@unique([reviewSessionId, supportingQuestionId])
+}
+
+

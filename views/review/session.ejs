@@ -1,0 +1,35 @@
+<%- include('../partials/flash', { query: query }); %>
+<div class="container mx-auto p-6 space-y-6">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-semibold">Review</h1>
+    <a href="/configs/<%= session.companyQuestion.reviewConfigId %>" class="text-gray-300">Back to Config</a>
+  </div>
+  <div class="p-4 border rounded bg-gray-800">
+    <div class="text-sm text-gray-400">Company Question</div>
+    <div class="text-lg"><%= session.companyQuestion.text %></div>
+  </div>
+
+  <form method="post" action="/review/session/<%= session.id %>/save" class="space-y-4">
+    <% session.companyQuestion.supportingQuestions.forEach(q => { 
+        const existing = session.supportingAnswers.find(a => a.supportingQuestionId === q.id);
+    %>
+      <div class="border rounded p-4">
+        <div class="text-xs text-gray-400 mb-1">Responder: <%= q.responderType %></div>
+        <label class="block text-sm font-medium mb-1"><%= q.text %></label>
+        <textarea name="sq_<%= q.id %>" rows="3" class="w-full border px-3 py-2 rounded text-gray-900"><%= (existing && existing.answer) || '' %></textarea>
+      </div>
+    <% }) %>
+    <div class="flex gap-2">
+      <button class="px-3 py-2 bg-blue-600 text-white rounded">Save Draft</button>
+      <% if (nextId) { %>
+        <a class="px-3 py-2 bg-gray-700 text-white rounded" href="/review/session/<%= nextId %>">Skip & Next</a>
+      <% } %>
+    </div>
+  </form>
+
+  <form method="post" action="/review/session/<%= session.id %>/submit">
+    <button class="px-3 py-2 bg-green-600 text-white rounded">Submit & Generate</button>
+  </form>
+</div>
+
+

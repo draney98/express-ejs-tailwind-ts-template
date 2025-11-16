@@ -1,0 +1,20 @@
+<%- include('../partials/flash'); %>
+<div class="container mx-auto p-6">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-semibold"><%= title %></h1>
+    <a href="/configs/new" class="px-3 py-2 bg-blue-600 text-white rounded">New Config</a>
+  </div>
+  <div class="mt-6 space-y-3">
+    <% if (configs.length === 0) { %>
+      <p class="text-gray-600">No configs yet.</p>
+    <% } %>
+    <% configs.forEach(c => { %>
+      <a class="block p-4 border rounded hover:bg-gray-50" href="/configs/<%= c.id %>">
+        <div class="font-medium"><%= c.name %></div>
+        <div class="text-sm text-gray-500"><%= c.companyQuestions.length %> company questions</div>
+      </a>
+    <% }) %>
+  </div>
+</div>
+
+

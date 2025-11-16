@@ -1,6 +1,6 @@
-## Express + EJS + Tailwind + TypeScript Starter (Render-ready)
+## Growth Gauge
 
-A minimal starter template using Express, EJS, Tailwind CSS, and TypeScript. Preconfigured for easy deployment on Render.
+A minimal app using Express, EJS, Tailwind CSS, and TypeScript. Preconfigured for easy deployment on Render.
 
 ### Use this template
 
@@ -14,6 +14,19 @@ npm run dev
 ```
 
 Visit http://localhost:3000
+
+### Reviews app usage
+
+- Create a config at `Review Configs` → New (e.g., "EOY 2025").
+- Add Company Questions with a prompt template.
+- For each Company Question, add Supporting Questions (choose MANAGER or SELF).
+- Start walkthrough from the config page. Save drafts or Submit to generate an AI answer.
+
+AI provider:
+- Defaults to local Ollama. Set env or inline when running:
+  - AI_PROVIDER=ollama
+  - OLLAMA_BASE_URL=http://localhost:11434
+  - OLLAMA_MODEL=llama3.1:8b
 
 ### Build and start (production)
 
@@ -39,9 +52,13 @@ npm start
 ```
 .
 ├── public/css/input.css
+├── prisma/schema.prisma
 ├── routes/index.ts
+├── src/lib/prisma.ts
 ├── server.ts
 ├── views/{layout,index,projects,about,contact}.ejs
+├── views/configs/{index,new,show}.ejs
+├── views/review/{session,summary}.ejs
 ├── tailwind.config.js
 ├── postcss.config.js
 ├── tsconfig.json

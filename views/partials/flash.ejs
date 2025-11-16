@@ -1,0 +1,12 @@
+<% if (query && query.error) { %>
+  <div class="container mx-auto p-4">
+    <div class="bg-red-100 text-red-800 px-4 py-2 rounded"><%= query.error %></div>
+  </div>
+<% } %>
+<% if (query && query.success) { %>
+  <div class="container mx-auto p-4">
+    <div class="bg-green-100 text-green-800 px-4 py-2 rounded">Saved.</div>
+  </div>
+<% } %>
+
+

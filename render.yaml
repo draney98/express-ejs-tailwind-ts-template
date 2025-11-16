@@ -1,5 +1,5 @@
 services:
   - type: web
-    name: your-service-name-here
+    name: growth-gauge
     env: node
     buildCommand: npm install
